@@ -46,16 +46,23 @@ const registerUser = expressAsyncHandler (async (req, res) => {
     } else {
         throw new Error("Invalid user data")
     }
+
 })
 
 // POST /api/users/logout -> Logout a delivery personnel
 const logoutUser = expressAsyncHandler (async (req, res) => {
-    res.status(200).json("This route logs out a user");
+
+    res.cookie("jwt", "", {
+        httpOnly: true,
+        expires: new Date(0)
+    })
+
+    res.status(200).json({message: "User logged Out successfully"});
 });
 
 // GET /api/users/orders -> Get all orders; Private route
 const GetOrders = expressAsyncHandler (async (req, res) => {
-    res.status(200).json("This route fetches all orders");
+    res.status(200).json("This route provides all orders available for delivery");
 });
 
 // PUT /api/users/update-order -> Authenticate a delivery personnel
