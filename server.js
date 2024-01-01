@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
 
-const port = process.env.port || 6000;
+const port = process.env.port || 7000;
 
 app.use("/api/users", userRoutes);
 app.use("/api", orderRoutes)
