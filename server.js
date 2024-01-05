@@ -1,4 +1,6 @@
 import express from "express";
+import corsOptions from "./config/corsOptions.js";
+import cors from "cors";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoute.js";
 import orderRoutes from "./routes/orderRoute.js";
@@ -16,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
+app.use(cors(corsOptions));
 
 const port = process.env.port || 7000;
 
